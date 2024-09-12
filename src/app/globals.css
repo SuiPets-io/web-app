@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '../styles/index.css';
+
+@layer base {
+	:root {
+		--foreground-rgb: 0 0 0;
+		--background-start-rgb: 214 219 220;
+		--background-end-rgb: 255 255 255;
+
+		/* green */
+		--green-900: 4 113 118; /* #047176*/
+		--green-800: 8 143 135; /* #088f87*/
+		--green-700: 25 193 151; /* #19C197 */
+		--green-600: 0 158 135; /* #009e87 */
+		--green-500: 19 212 163; /* #13d4a3 */
+		--green-400: 0 186 119; /* #00ba77 */
+		--green-300: 116 252 177; /* #74fcb1 */
+		--green-200: 212 255 214; /* #d4ffd6 */
+		--green-100: 209 254 220; /* #d1fedc */
+
+		/* orange */
+		--orange-400: 158 74 0;
+		--orange-300: 247 159 92;
+		--orange-200: 247 152 87;
+		--orange-100: 252 233 149;
+
+		/* neutral */
+		--neutral-black: 18 14 33; /* #120e21 */
+		--neutral-900: 23 20 35; /* #171423 */
+		--neutral-800: 27 26 40; /* #1b1a28 */
+		--neutral-700: 36 35 50; /* #242332 */
+		--neutral-600: 45 44 59; /* #2d2c3b */
+		--neutral-500: 56 56 70; /* #383846 */
+		--neutral-400: 101 99 111; /* #65636f*/
+		--neutral-300: 167 164 164; /* #a7a4a4 */
+		--neutral-200: 222 222 222; /* #dedede */
+		--neutral-100: 240 240 240; /* #f0f0f0 */
+		--neutral-white: 255 255 255; /* #ffffff */
+
+		/* info */
+		--info-100: 228 242 255; /* #e4f2ff */
+		--info-200: 185 221 255; /* #b9ddff */
+		--info-300: 109 183 252; /* #6db7fc */
+
+		/* success */
+		--success-300: 143 204 30; /* #8fcc1e */
+		--success-200: 205 239 117; /* #cdef75 */
+		--success-100: 243 252 209; /* #f3fcd1 */
+
+		/* error */
+		--error-300: 227 77 77; /* #e34d4d */
+		--error-200: 253 233 238; /* #fde9ee */
+		--error-100: 255 214 223; /* #ffd6df */
+
+		/* highlight */
+		--highlight-300: 255 222 114; /* #ffde72 */
+		--highlight-200: 255 242 178; /* #fff2b2 */
+		--highlight-100: 255 249 216; /* #fff9d8 */
+	}
+}
+
+@layer utilities {
+	/* Hide scrollbar for Chrome Safari and Opera */
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	/* Hide scrollbar for IE Edge and Firefox */
+	.no-scrollbar {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+
+	.text-balance {
+		text-wrap: balance;
+	}
+}
+
+body {
+	overflow: hidden;
+}
+
+.draw-card {
+	perspective: 1000px; /* Important for 3D flip effect */
+	transition: transform 0.6s ease-in-out;
+	transform-style: preserve-3d;
+}
+
+.draw-card.flipped {
+	transform: rotateY(180deg);
+}
+
+.draw-card-face {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden; /* Important for hiding back face */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: 18px;
+}
+
+.draw-card-face-front,
+.draw-card-face-front {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.draw-card-face-back {
+	transform: rotateY(180deg);
+}
+
+.draw-card.selected::after {
+	content: '';
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	border: 2px solid #fdff89;
+	width: calc(100% + 4px);
+	height: calc(100% + 4px);
+	border-radius: 8px;
+	z-index: -1;
+	filter: blur(2px);
+}
+
+.grecaptcha-badge {
+	visibility: hidden;
+}
+
+.text-stroke-green-700 {
+	-webkit-text-stroke: 1.5px #19c197;
+	-webkit-text-fill-color: #d4ffd6;
+}
+
+.text-stroke-green-800 {
+	-webkit-text-stroke: 1.5px #009e87;
+	-webkit-text-fill-color: #13d4a3;
+}
+
+.egg-shake {
+	-webkit-transform-origin: center 80%;
+	-webkit-animation: shake 1s infinite alternate;
+	/* -webkit-animation-delay: 5s; */
+}
+
+@keyframes shake {
+	0% {
+		-webkit-transform: rotate(0);
+	}
+	25% {
+		-webkit-transform: rotate(5deg);
+	}
+	50% {
+		-webkit-transform: rotate(0);
+	}
+	75% {
+		-webkit-transform: rotate(-5deg);
+	}
+	100% {
+		-webkit-transform: rotate(0);
+	}
+}
+
+.slider-track {
+	@apply h-1;
+}
+
+.slider-track-0 {
+	@apply bg-green-500 rounded-t-full overflow-hidden;
+}
+
+.slider-track-1 {
+	@apply bg-neutral-300 rounded-r-full overflow-hidden;
+}
+
+.slider-mark {
+	@apply w-2 h-2 rotate-45 border border-neutral-800 bg-white -top-0.5 shadow;
+}
+
+.global-loader {
+	transition:
+		opacity 0.25s,
+		display 0.25s allow-discrete;
+}
+
+.global-loader.fade-out {
+	opacity: 0;
+	display: none;
+}

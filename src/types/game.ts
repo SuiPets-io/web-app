@@ -1,0 +1,5 @@
+export type TPet = 'pig' | 'dog' | 'cat' | 'chicken'
+export type TPetStatus = 'fail' | 'waiting-to-check-buy' | 'egg' | 'pet' | 'die'
+export type TPetStage = 'eat' | 'toilet' | 'entertainment'
+export type TRarity = 'common' | 'rare' | 'epic' | 'legendary'
+export type TEggOrigin = 'normal' | 'genesis'
